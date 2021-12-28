@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="reserve">
+                <h1>დაჯავშნე ონლაინ</h1>
+            </div>
+            <div class="login">
+                <a href="authentication/login">Login</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="vaccines">
+            <div class="container">
+                <div class="left">
+                    <img src="{% static 'images/pic.png'%}" alt="img">
+                </div>
+                <div class="right">
+                    <h2>აირჩიეთ ვაქცინა</h2>
+                    <div class="vaccine-list">
+                        {% for name, quantity in dt %}
+                            <a href="/Reservation/{{name}}">
+                                
+                                <span>{{name}} (ადგილი) {{quantity}}</span>
+                            </a>
+                        {% endfor %}
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="{% static 'js/main.js'%}"></script>
+</body>
+</html>

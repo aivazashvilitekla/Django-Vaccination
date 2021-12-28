@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/reservation.css'%}">
+</head>
+<body>
+    <main>
+        <section class="reservation">
+            <h1>კოვიდ 19 ვაქცინაცია ({{vaccine}}) - ვიზიტის დაჯავშნა</h1>
+            <hr>
+            <h4>პირადი მონაცემები</h4>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <br>
+                <input type="submit" value="დადასტურება">
+                {% comment %} <label for="pn">პირადი N <span style="color: red;">*</span></label>
+                <br>
+                <input type="number" name="pn" required placeholder="პირადი N">
+                <br>
+                <!--  -->
+                <br>
+                <label for="">დაბადების წელი <span style="color: red;">*</span></label>
+                <br>
+                <input type="number" required placeholder="დაბადების წელი">
+                <br>
+                <!--  -->
+                <br>
+                <label for="">სახელი <span style="color: red;">*</span></label>
+                <br>
+                <input type="text" required placeholder="სახელი">
+                <br>
+                <!--  -->
+                <br>
+                <label for="">გვარი <span style="color: red;">*</span></label>
+                <br>
+                <input type="text" required placeholder="გვარი">
+                <br>
+                <!--  -->
+                <br>
+                <label for="">მობილური <span style="color: red;">*</span></label>
+                <br>
+                <input type="number" required placeholder="მობილური">
+                <br>
+                <!--  -->
+                <br>
+                <label for="">ელ-ფოსტა </label>
+                <br>
+                <input type="email" placeholder="ელ-ფოსტა">
+                <br>
+                <!--  -->
+                <label for="">რეგიონი</label>
+                <br>
+                <select name="" id="">
+                    {% for name in regions %}
+                        <option value="">{{name}}</option>
+                    {% endfor %}
+                </select>
+                <!--  -->
+                <br>
+                <label for="">თარიღი</label>
+                <br>
+                <input type="date" name="" id="">
+                <br><br>
+                <input type="submit" value="დადასტურება"> {% endcomment %}
+            </form>
+        </section>
+    </main>
+</body>
+</html>
