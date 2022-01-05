@@ -4,31 +4,14 @@ import sqlite3
 from .forms import VacReg
 from .models import VaccineRegistration, Vaccines
 
-
-sqliteConnection = sqlite3.connect('../vacDB.db', check_same_thread=False)
-c = sqliteConnection.cursor()
-
-def getRegions():
-    c.execute("select name from regions")
-
-    ls = []
-    for row in c.fetchall():
-        ls.append(row[0])
-    return ls
-
-
 # Create your views here.
 def index(request):
-    # c.execute("select name, quantity from vaccines")
     dt = Vaccines.objects.all()
     data = {"dt":dt}
     
     return render(request, 'base.html', data)
 
 def reservation(request, vaccine):
-    # if request.method == "GET":
-    #     ls = getRegions()
-    # 
     form = VacReg(request.POST)
     if request.method == "POST":
         personal_Number = request.POST["personalNumber"]
@@ -60,3 +43,9 @@ def reservation(request, vaccine):
 
     
     return render(request, 'reservation/reservation.html', {'vaccine': vaccine,  "form": form})
+
+def login(request):
+    return render(request, 'authentication/login.html')
+
+def register(request):
+    return render(request, 'authentication/register.html')

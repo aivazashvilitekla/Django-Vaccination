@@ -19,3 +19,5 @@ class VacReg(forms.Form):
     email = forms.CharField(label=mark_safe('<br/>ელ-ფოსტა'), max_length=70, required=False)
     region = forms.ChoiceField(label=mark_safe('<br/>რეგიონი'), choices=[CHOICES], required=True)
     date = forms.CharField(label=mark_safe('<br/>თარიღი(YYYY-MM-DD)'), required=True)
+
+# class UserReg(forms.Form):

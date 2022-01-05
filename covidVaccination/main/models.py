@@ -28,3 +28,11 @@ class Hospitals(models.Model):
 class Regions(models.Model):
     name = models.CharField(null=False, max_length=70)
     hospital = models.ForeignKey(Hospitals, on_delete=models.CASCADE)
+
+class Users(models.Model):
+    firstname = models.CharField(max_length=50)
+    lastname = models.CharField(max_length=50)
+    personalID = models.CharField(max_length=11)
+    email = models.EmailField(null = True, max_length=254)
+    password = models.CharField(max_length=50)
+    phone = models.CharField(max_length=9)
