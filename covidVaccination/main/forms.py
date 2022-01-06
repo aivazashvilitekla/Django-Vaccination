@@ -1,9 +1,10 @@
 from django import forms
-import sqlite3
+from django.forms import fields
 from django.utils.safestring import mark_safe
 
 from .models import Regions
-
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 CHOICES = []
 regions = Regions.objects.all()
@@ -20,4 +21,8 @@ class VacReg(forms.Form):
     region = forms.ChoiceField(label=mark_safe('<br/>რეგიონი'), choices=[CHOICES], required=True)
     date = forms.CharField(label=mark_safe('<br/>თარიღი(YYYY-MM-DD)'), required=True)
 
-# class UserReg(forms.Form):
+
+class CreateUserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
