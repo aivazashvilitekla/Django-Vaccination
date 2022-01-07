@@ -7,6 +7,7 @@ urlpatterns = [
     path('Reservation/<str:vaccine>', views.reservation, name="vaccine_reservation"),
     path('authentication/login', views.loginPage, name="login"),
     path('authentication/register', views.register, name="register"),
-    path('profile', views.profile, name="profile"),
+    path('authentication/profile', views.profile, name="profile"),
     path('logout', views.logoutUser, name="logout"),
+    path('adminpanel', views.adminPage, name="adminpanel"),
 ]
