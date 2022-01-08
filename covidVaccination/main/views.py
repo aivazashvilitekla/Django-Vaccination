@@ -28,6 +28,10 @@ def reservation(request, vaccine):
         obj.regionID = request.POST["region"]
         obj.time = request.POST["date"]
         obj.vaccineName = vaccine
+
+        a = Vaccines.objects.get(name=vaccine)
+        a.quantity -= 1 
+        a.save()
         obj.save()
         
         return HttpResponseRedirect('/Reservation/'+vaccine)
@@ -45,13 +49,11 @@ def loginPage(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        
-
         user = authenticate(request, username = username, password=password)
         if user is not None:
             adminUser = User.objects.get(username=username)
             if adminUser.is_staff==1:
-                return redirect('adminpanel')
+                return redirect('adminpanel/home')
 
             login(request, user)
             request.session['username'] = username
@@ -99,7 +101,7 @@ def adminPage(request):
     context = {
         'vaccinesData' : Vaccines.objects.all()
     }
-    a = Vaccines.objects.get(id=5)
-    a.entry_set.set([e1, e2])
-    a.entry_set.set([e1.pk, e2.pk])
+    # a = Vaccines.objects.get(id=5)
+    # a.entry_set.set([e1, e2])
+    # a.entry_set.set([e1.pk, e2.pk])
     return render(request, 'adminpage.html', context)
