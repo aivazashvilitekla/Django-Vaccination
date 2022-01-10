@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 # Create your views here.
 def index(request):
     dt = Vaccines.objects.all()
-    data = {"dt":dt, 'us': request.session['username']}
+    data = {"dt":dt}
     
     return render(request, 'base.html', data)
 
